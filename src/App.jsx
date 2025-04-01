@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Router,Route,Routes } from 'react-router-dom';
 import './index.css'
+import MainLayout from './components/Layout';
 
 function App() {
   const [someState, setSomeState] = useState(null);
@@ -8,9 +9,8 @@ function App() {
 
   return (
     <>
-    <div className='bg-amber-300'>This is our Eventscheduler</div>
     <Routes>
-      <Route>
+      <Route path="/" element={<MainLayout/>}>
         <Route/>
         <Route/>
         <Route/>
