@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { Router,Route,Routes } from 'react-router-dom';
 import './index.css'
 import MainLayout from './components/Layout';
+import SignIn from './components/SignIn';
+
+
 
 function App() {
   const [someState, setSomeState] = useState(null);
@@ -14,6 +17,7 @@ function App() {
         <Route/>
         <Route/>
         <Route/>
+        <Route path="/SignIn" element={<SignIn/>}/>
      </Route >
     </Routes>
     </>
