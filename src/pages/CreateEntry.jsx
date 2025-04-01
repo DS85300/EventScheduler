@@ -1,41 +1,103 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const CreateEntry = () => {
+  const API_TOKEN = import.meta.env.VITE_API_TOKEN;
+  const PORT = import.meta.env.VITE_PORT;
   const dataObject = {
-    date: null,
-    title: null,
-    location: null,
-    lat: null,
-    long: null,
-    description: null,
+    date: "",
+    title: "",
+    location: "",
+    latitude: 0,
+    longitude: 0,
+    description: "",
   };
 
-  const [input, setInput] = useState({ dataObject });
+  const [input, setInput] = useState({ ...dataObject });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
-    async function postData() {
-      try {
-        const response = await fetch(URL, {
-          method: "POST",
-          body: JSON.stringify({
-            input,
-          }),
-        });
-      } catch (error) {}
+    const isAnyFieldEmpty = Object.values(input).some((value) => !value);
+    if (isAnyFieldEmpty) {
+      setError("Please fill in all fields");
+      setLoading(false);
+      return;
+    }
+    const checkLat = !isNaN(input.latitude);
+    const checkLong = !isNaN(input.longitude);
+    if (!checkLat || !checkLong) {
+      setError("Use numbers for latitude and longitude");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:${PORT}/api/events`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${API_TOKEN}`,
+        },
+        body: JSON.stringify(input),
+      });
+
+      if (!response.ok) throw new Error(response.status);
+
+      console.log("Success:", { response });
+      setSuccess(true);
+      setInput({ ...dataObject });
+    } catch (error) {
+      console.log("Error:", { error });
+      setError(error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    setSuccess(false);
+  }, []);
+
+  if (loading) return <div>Loading...</div>;
+
+  if (success) {
+    return (
+      <div>
+        <p className="text-green-500">Your event has been created!</p>
+        <button
+          onClick={() => {
+            setSuccess(false);
+            setError(false);
+          }}
+        >
+          Create new event
+        </button>
+      </div>
+    );
+  }
 
   return (
     <>
       <h1>Create new event</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="grid" onSubmit={handleSubmit}>
+        {error ? (
+          <div>
+            <p className="bg-red-400">Error: {error}</p>
+          </div>
+        ) : (
+          ""
+        )}
+
         <label>
           Date:{" "}
           <input
             name="date"
             type="date"
+            value={input.date}
             onChange={(e) => setInput({ ...input, date: e.target.value })}
           />
         </label>
@@ -44,6 +106,7 @@ const CreateEntry = () => {
           <input
             name="title"
             type="text"
+            value={input.title}
             placeholder="What's it about?"
             onChange={(e) => setInput({ ...input, title: e.target.value })}
           />
@@ -53,19 +116,21 @@ const CreateEntry = () => {
           <input
             name="location"
             type="text"
+            value={input.location}
             placeholder="Where does it take place?"
             onChange={(e) => setInput({ ...input, location: e.target.value })}
           />
         </label>
         <div>
-          <label>Coordinates</label>
+          <label>Coordinates: </label>
           <label>
             Latitude{" "}
             <input
               name="lat"
               type="text"
+              value={input.latitude}
               placeholder="Enter latitude"
-              onChange={(e) => setInput({ ...input, lat: e.target.value })}
+              onChange={(e) => setInput({ ...input, latitude: e.target.value })}
             />
           </label>
           <label>
@@ -73,22 +138,27 @@ const CreateEntry = () => {
             <input
               name="long"
               type="text"
+              value={input.longitude}
               placeholder="Enter longitude"
-              onChange={(e) => setInput({ ...input, long: e.target.value })}
+              onChange={(e) =>
+                setInput({ ...input, longitude: e.target.value })
+              }
             />
           </label>
         </div>
         <label>
           Description{" "}
-          <textfield
+          <textarea
             name="description"
             placeholder="Describe your event"
+            value={input.description}
             onChange={(e) =>
               setInput({ ...input, description: e.target.value })
             }
-          ></textfield>
+          ></textarea>
         </label>
-        <input type="submit" />
+        <br />
+        <button type="submit"> Create </button>
       </form>
     </>
   );
