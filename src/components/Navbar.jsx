@@ -19,7 +19,7 @@ const Navbar= () => {
       <li className="mr-5"><Link>Create Event</Link></li>
       <li className="mr-5"><Link>|          </Link></li>
       <li className="mr-5"><Link>Login      </Link></li>
-      <li className="mr-5"><Link>SignUp    </Link></li>
+      <li className="mr-5"><Link to="/SignIn">SignIn</Link></li>
     </ul>
   </div>
 </div>
