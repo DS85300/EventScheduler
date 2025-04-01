@@ -4,14 +4,12 @@ import './index.css'
 import MainLayout from './components/Layout';
 import SignIn from './components/SignIn';
 
-
-
 function App() {
   const [someState, setSomeState] = useState(null);
 
-
   return (
     <>
+
     <Routes>
       <Route path="/" element={<MainLayout/>}>
         <Route/>
@@ -20,8 +18,9 @@ function App() {
         <Route path="/SignIn" element={<SignIn/>}/>
      </Route >
     </Routes>
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
