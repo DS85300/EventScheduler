@@ -4,8 +4,8 @@ const SignIn = () => {
     return (
 
         <>
-        <div className="bg-gradient-to-r from-[#79c3e0] to-[#2084ab]bg-[#79c3e0] flex items-center justify-center h-screen">
-        <fieldset className="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
+        <div className="bg-gradient-to-r from-[#79c3e0] to-[#2084ab] flex items-center justify-center h-screen">
+        <form className="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
   <legend className="fieldset-legend">Login</legend>
   
   <label className="fieldset-label">Email</label>
@@ -15,7 +15,7 @@ const SignIn = () => {
   <input type="password" className="input" placeholder="Password" />
   
   <button className="btn btn-neutral mt-4">Login</button>
-</fieldset>
+</form>
         </div>
         </>
     );
