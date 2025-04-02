@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const SignIn = () => {
+const LogIn = () => {
 
 const [email,setEmail]= useState("");
 const [password,setPassword] = useState("");
@@ -63,4 +63,4 @@ const handleSubmit = async (e) => {
     );
 };
 
-export default SignIn;
+export default LogIn;
