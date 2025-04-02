@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
+import authCheck from "../utils/authCheck";
 
 const CreateEntry = () => {
-  const API_TOKEN = import.meta.env.VITE_API_TOKEN;
-  const PORT = import.meta.env.VITE_PORT;
+  const loggedIn = authCheck();
+  if (!loggedIn) return <div>Not logged in</div>;
+
+  const API_TOKEN = loggedIn;
+  const PORT = 3001;
   const dataObject = {
     date: "",
     title: "",
