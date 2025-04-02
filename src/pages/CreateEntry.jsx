@@ -70,89 +70,125 @@ const CreateEntry = () => {
 
   if (success) {
     return (
-      <div>
-        <p className="text-green-500">Your event has been created!</p>
-        <button
-          onClick={() => {
-            setSuccess(false);
-            setError(false);
-          }}
-        >
-          Create new event
-        </button>
+      <div className="flex flex-col items-center my-10">
+        <div class="w-xl">
+          <div role="alert" className="alert alert-success mb-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 shrink-0 stroke-current"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span>Your event has been created!</span>
+          </div>
+          <button
+            className="btn btn-outline btn-primary "
+            onClick={() => {
+              setSuccess(false);
+              setError(false);
+            }}
+          >
+            Create new event
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <>
-      <h1>Create new event</h1>
-      <form className="grid" onSubmit={handleSubmit}>
-        {error ? (
-          <div>
-            <p className="bg-red-400">Error: {error}</p>
-          </div>
-        ) : (
-          ""
-        )}
+    <div className="flex flex-col items-center">
+      <h1 className="text-5xl py-10">Create new event</h1>
+      <form onSubmit={handleSubmit}>
+        <fieldset className="fiseldset w-xl bg-base-200 border border-base-300 p-4 rounded-box">
+          <legend className="fieldset-legend">Event details</legend>
+          {error ? (
+            <div role="alert" className="alert alert-error mb-5">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6 shrink-0 stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <span>Error: {error}</span>
+            </div>
+          ) : (
+            ""
+          )}
 
-        <label>
-          Date:{" "}
+          <label className="fieldset-label">Date: </label>
           <input
+            className="input w-full"
             name="date"
             type="date"
             value={input.date}
             onChange={(e) => setInput({ ...input, date: e.target.value })}
           />
-        </label>
-        <label>
-          Title:{" "}
+          <label className="fieldset-label">Title: </label>
           <input
+            className="input w-full"
             name="title"
             type="text"
             value={input.title}
             placeholder="What's it about?"
             onChange={(e) => setInput({ ...input, title: e.target.value })}
           />
-        </label>
-        <label>
-          Location:{" "}
+          <label className="fieldset-label">Location: </label>
           <input
+            className="input w-full"
             name="location"
             type="text"
             value={input.location}
             placeholder="Where does it take place?"
             onChange={(e) => setInput({ ...input, location: e.target.value })}
           />
-        </label>
-        <div>
-          <label>Coordinates: </label>
-          <label>
-            Latitude{" "}
-            <input
-              name="lat"
-              type="text"
-              value={input.latitude}
-              placeholder="Enter latitude"
-              onChange={(e) => setInput({ ...input, latitude: e.target.value })}
-            />
-          </label>
-          <label>
-            Longitude{" "}
-            <input
-              name="long"
-              type="text"
-              value={input.longitude}
-              placeholder="Enter longitude"
-              onChange={(e) =>
-                setInput({ ...input, longitude: e.target.value })
-              }
-            />
-          </label>
-        </div>
-        <label>
-          Description{" "}
+
+          <label className="fieldset-label">Coordinates: </label>
+          <div className="flex gap-5 w-full">
+            <div className="w-full">
+              <label className="fieldset-label">Latitude </label>
+              <input
+                className="input w-full"
+                name="lat"
+                type="text"
+                value={input.latitude}
+                placeholder="Enter latitude"
+                onChange={(e) =>
+                  setInput({ ...input, latitude: e.target.value })
+                }
+              />
+            </div>
+            <div className="w-full">
+              <label className="fieldset-label">Longitude </label>
+              <input
+                className="input w-full"
+                name="long"
+                type="text"
+                value={input.longitude}
+                placeholder="Enter longitude"
+                onChange={(e) =>
+                  setInput({ ...input, longitude: e.target.value })
+                }
+              />
+            </div>
+          </div>
+
+          <label className="fieldset-label">Description </label>
           <textarea
+            className="input w-full mb-2"
             name="description"
             placeholder="Describe your event"
             value={input.description}
@@ -160,11 +196,15 @@ const CreateEntry = () => {
               setInput({ ...input, description: e.target.value })
             }
           ></textarea>
-        </label>
-        <br />
-        <button type="submit"> Create </button>
+
+          <br />
+          <button className="btn btn-outline btn-primary" type="submit">
+            {" "}
+            Create{" "}
+          </button>
+        </fieldset>
       </form>
-    </>
+    </div>
   );
 };
 
