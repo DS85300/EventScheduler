@@ -1,26 +1,33 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+
 const [email,setEmail]= useState("");
 const [password,setPassword] = useState("");
 const [error,setError]= useState(null);
+const navigate  = useNavigate();
+
 
 const handleSubmit = async (e) => {
-    e.prevent.default();
-
+    e.preventDefault();
+    console.log({email,password})
     try {
-        const response = await fetch("http//:localhost:3001/api/auth/login", {
+        const response = await fetch("http://localhost:3001/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({email,password}),
         });
-        if (!response.ok) throw new error("Log In failed");
-        const data = response.JSON();
+        if (!response.ok) throw new Error("Log In failed"||`HTTP ${response.status}`|| errorData.message);
+        const data = await response.json();
         localStorage.setItem("api-token",data.token);
+        navigate("/createEvent");
+        
         
     } catch (error) {
+        setError(error.message);
         console.error(error);
     }
 };
@@ -29,7 +36,7 @@ const handleSubmit = async (e) => {
     return (
 
         <>
-        <div className="bg-gradient-to-r from-[#79c3e0] to-[#2084ab] flex items-center justify-center h-screen">
+        <div className="bg-gradient-to-br from-[#79c3e0] to-[#2084ab] flex items-center justify-center h-screen">
         <form onSubmit={handleSubmit} className="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box">
   <legend className="fieldset-legend">Login</legend>
 

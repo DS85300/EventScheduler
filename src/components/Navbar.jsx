@@ -16,8 +16,8 @@ const Navbar= () => {
   <div className="flex-none">
     <ul className="menu-horizontal px-1 mr-2">
       <li className="mr-5"><Link>Home       </Link></li>
-      <li className="mr-5"><Link>Create Event</Link></li>
-      <li className="mr-5"><Link>|          </Link></li>
+      <li className="mr-5"><Link to="/CreateEvent">Create Event</Link></li>
+      <li className="mr-5">|</li>
       <li className="mr-5"><Link>Login      </Link></li>
       <li className="mr-5"><Link to="/SignIn">SignIn</Link></li>
     </ul>
