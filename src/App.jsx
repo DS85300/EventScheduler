@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Router,Route,Routes } from 'react-router-dom';
 import './index.css'
 import MainLayout from './components/Layout';
-import SignIn from './pages/SignIn';
+import LogIn from './pages/LogIn';
 import CreateEntry from './pages/CreateEntry';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Route/>
         <Route path="/CreateEvent" element={<CreateEntry/>}/>
         <Route/>
-        <Route path="/SignIn" element={<SignIn/>}/>
+        <Route path="/LogIn" element={<LogIn/>}/>
      </Route >
     </Routes>
 
