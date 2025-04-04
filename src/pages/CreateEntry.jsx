@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import authCheck from "../utils/authCheck";
+import { createEvent } from "../utils/api";
+
 
 const CreateEntry = () => {
   const loggedIn = authCheck();
