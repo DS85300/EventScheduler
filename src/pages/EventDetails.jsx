@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { getEventById } from '../utils/api';
 
 function EventDetails() {
   const { id } = useParams();
@@ -8,43 +9,10 @@ function EventDetails() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // TODO: Replace with actual API call
     const fetchEvent = async () => {
       try {
-        // Mock data - replace with actual API call
-        const mockEvents = {
-          1: {
-            id: 1,
-            title: 'Event Title',
-            date: '2025-04-04',
-            time: '07:59',
-            location: 'Schloßbezirk 10, 76131 Karlsruhe',
-            description: 'Some Description for the Event',
-            attendees: ['John Doe', 'Jane Smith', 'Bob Johnson'],
-            organizer: 'John Doe',
-            status: 'Confirmed',
-            latitude: 8.404746955649602,
-            longitude: 49.01438194665317
-          },
-          2: {
-            id: 2,
-            title: 'Project Review',
-            date: '2024-04-12',
-            time: '10:00',
-            location: 'Virtual',
-            description: 'Monthly project review with stakeholders',
-            attendees: ['Jane Smith', 'Alice Brown', 'Charlie Wilson'],
-            organizer: 'Jane Smith',
-            status: 'Pending'
-          }
-        };
-
-        const eventData = mockEvents[id];
-        if (eventData) {
-          setEvent(eventData);
-        } else {
-          setError('Event not found');
-        }
+        const eventData = await getEventById(id);
+        setEvent(eventData);
       } catch (err) {
         setError('Failed to fetch event details');
       } finally {

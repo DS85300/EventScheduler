@@ -34,4 +34,19 @@ export const getAllEvents = async () => {
     console.error('Error fetching events:', error);
     throw error;
   }
+};
+
+export const getEventById = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/events/${id}`);
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch event');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching event:', error);
+    throw error;
+  }
 }; 
