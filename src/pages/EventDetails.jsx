@@ -75,7 +75,7 @@ function EventDetails() {
           <span>{error}</span>
         </div>
         <div className="mt-4">
-          <Link to="/" className="btn btn-primary">Back to Home</Link>
+          <Link to="/" className="btn btn-error text-base-content">Back to Home</Link>
         </div>
       </div>
     );
@@ -151,7 +151,7 @@ function EventDetails() {
             </div>
 
             <div className="card-actions justify-end mt-6">
-              <Link to="/" className="btn btn-primary">Back to Home</Link>
+              <Link to="/" className="btn btn-error text-base-content">Back to Home</Link>
             </div>
           </div>
         </div>
