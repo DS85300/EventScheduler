@@ -72,7 +72,7 @@ const CreateEntry = () => {
   if (success) {
     return (
       <div className="flex flex-col items-center my-10">
-        <div class="w-xl">
+        <div className="w-xl">
           <div role="alert" className="alert alert-success mb-5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
