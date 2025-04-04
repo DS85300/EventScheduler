@@ -109,15 +109,6 @@ function EventDetails() {
 
             <div className="divider"></div>
 
-            <div>
-              <h2 className="text-xl font-semibold mb-2">Attendees</h2>
-              <div className="flex flex-wrap gap-2">
-                {event.attendees.map((attendee, index) => (
-                  <div key={index} className="badge badge-outline">{attendee}</div>
-                ))}
-              </div>
-            </div>
-
             <div className="card-actions justify-end mt-6">
               <Link to="/" className="btn btn-error text-base-content">Back to Home</Link>
             </div>
