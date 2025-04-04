@@ -7,9 +7,6 @@ import CreateEntry from "./pages/CreateEntry";
 import Home from "./pages/Home";
 import EventDetails from "./pages/EventDetails";
 import authCheck from "./utils/authCheck";
-import { useState } from "react";
-import { Router, Route, Routes } from "react-router-dom";
-import "./index.css";
 import SignUp from "./pages/SignUp";
 
 function App() {

@@ -32,7 +32,11 @@ const Navbar = () => {
 
             {isLoggedIn ? (
               <li className="mr-5">
-                <button type="button" onClick={() => logout()}>
+                <button
+                  type="button"
+                  className="cursor-pointer"
+                  onClick={() => logout()}
+                >
                   Logout
                 </button>
               </li>
