@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import EventCard from '../components/EventCard';
-import { getAllEvents } from '../utils/api';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import EventCard from "../components/EventCard";
+import { getAllEvents } from "../utils/api";
 
 function Home() {
   const [events, setEvents] = useState([]);
@@ -15,18 +15,18 @@ function Home() {
         // Handle paginated response structure
         setEvents(data.results || []);
       } catch (err) {
-        console.error('Error fetching events:', err);
+        console.error("Error fetching events:", err);
         // Provide mock data when API call fails
         setEvents([
           {
             id: 1,
-            title: 'Event Title',
-            date: '2025-04-04T07:59:56.966Z',
-            location: 'Schloßbezirk 10, 76131 Karlsruhe',
-            description: 'Some Description for the Event',
+            title: "Event Title",
+            date: "2025-04-04T07:59:56.966Z",
+            location: "Schloßbezirk 10, 76131 Karlsruhe",
+            description: "Some Description for the Event",
             latitude: 8.404746955649602,
-            longitude: 49.01438194665317
-          }
+            longitude: 49.01438194665317,
+          },
         ]);
       } finally {
         setLoading(false);
@@ -50,8 +50,18 @@ function Home() {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="alert alert-error">
-          <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="stroke-current shrink-0 h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
           </svg>
           <span>{error}</span>
         </div>
@@ -79,4 +89,4 @@ function Home() {
   );
 }
 
-export default Home; 
+export default Home;
