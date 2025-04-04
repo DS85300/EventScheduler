@@ -24,7 +24,7 @@ const LogIn = () => {
         );
       const data = await response.json();
       localStorage.setItem("api-token", data.token);
-      navigate("/createEvent");
+      navigate("/");
     } catch (error) {
       setError(error.message);
       console.error(error);
