@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 const Navbar= () => {
 
 
@@ -29,6 +30,7 @@ const Navbar= () => {
 
 
     );
+
 };
 
 export default Navbar;
