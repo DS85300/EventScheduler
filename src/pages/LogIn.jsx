@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const LogIn = () => {
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -23,6 +25,7 @@ const LogIn = () => {
           "Log In failed" || `HTTP ${response.status}` || errorData.message
         );
       const data = await response.json();
+      login();
       localStorage.setItem("api-token", data.token);
       navigate("/");
     } catch (error) {
