@@ -15,14 +15,16 @@ function EventDetails() {
         const mockEvents = {
           1: {
             id: 1,
-            title: 'Team Meeting',
-            date: '2024-04-10',
-            time: '14:00',
-            location: 'Conference Room A',
-            description: 'Weekly team sync meeting',
+            title: 'Event Title',
+            date: '2025-04-04',
+            time: '07:59',
+            location: 'Schloßbezirk 10, 76131 Karlsruhe',
+            description: 'Some Description for the Event',
             attendees: ['John Doe', 'Jane Smith', 'Bob Johnson'],
             organizer: 'John Doe',
-            status: 'Confirmed'
+            status: 'Confirmed',
+            latitude: 8.404746955649602,
+            longitude: 49.01438194665317
           },
           2: {
             id: 2,

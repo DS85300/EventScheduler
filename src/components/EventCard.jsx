@@ -1,6 +1,15 @@
-import PropTypes from 'prop-types';
-
 function EventCard({ event }) {
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
   return (
     <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
       <div className="card-body">
@@ -10,7 +19,7 @@ function EventCard({ event }) {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-            {event.date} at {event.time}
+            {formatDate(event.date)}
           </p>
           <p className="flex items-center gap-2">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -25,16 +34,5 @@ function EventCard({ event }) {
     </div>
   );
 }
-
-EventCard.propTypes = {
-  event: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    time: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default EventCard; 
