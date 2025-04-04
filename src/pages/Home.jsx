@@ -12,9 +12,14 @@ function Home() {
     const fetchEvents = async () => {
       try {
         const data = await getAllEvents();
+<<<<<<< HEAD
         // Ensure data is an array
         setEvents(Array.isArray(data) ? data : []);
         console.log("Fetched events:", data);
+=======
+        // Handle paginated response structure
+        setEvents(data.results || []);
+>>>>>>> main
       } catch (err) {
         console.error("Error fetching events:", err);
         // Provide mock data when API call fails

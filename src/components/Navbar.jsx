@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import authCheck from "../utils/authCheck";
 
 const Navbar = () => {
+<<<<<<< HEAD
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -15,6 +16,8 @@ const Navbar = () => {
     useNavigate("/"); // Optional: redirect
   };
 
+=======
+>>>>>>> main
   return (
     <>
       <div className="navbar bg-[#414E59] text-white shadow-sm">
@@ -27,6 +30,7 @@ const Navbar = () => {
               <Link to="/">Home </Link>
             </li>
             <li className="mr-5">
+<<<<<<< HEAD
               <Link to="/protected">Create Event</Link>
             </li>
 
@@ -47,6 +51,17 @@ const Navbar = () => {
                 </li>
               </>
             )}
+=======
+              <Link to="/CreateEvent">Create Event</Link>
+            </li>
+            <li className="mr-5">|</li>
+            <li className="mr-5">
+              <Link to="LogIn">Login </Link>
+            </li>
+            <li className="mr-5">
+              <Link to="SignUp">SignUp</Link>
+            </li>
+>>>>>>> main
           </ul>
         </div>
       </div>
