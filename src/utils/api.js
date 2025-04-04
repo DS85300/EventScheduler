@@ -3,7 +3,7 @@ const API_BASE_URL = "http://localhost:3001";
 export const createEvent = async (eventData) => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/events`, {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

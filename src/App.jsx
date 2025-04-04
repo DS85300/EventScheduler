@@ -22,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
+          <Route path="/SignUp" element={<SignUp />} />
           <Route path="protected" element={<ProtectedLayout />}>
             <Route index element={<CreateEntry />} />
           </Route>
