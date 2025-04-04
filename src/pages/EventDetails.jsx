@@ -75,7 +75,7 @@ function EventDetails() {
           <span>{error}</span>
         </div>
         <div className="mt-4">
-          <Link to="/" className="btn btn-primary">Back to Home</Link>
+          <Link to="/" className="btn btn-error text-base-content">Back to Home</Link>
         </div>
       </div>
     );
@@ -109,6 +109,19 @@ function EventDetails() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-lg">{event.location}</span>
+                {event.latitude && event.longitude && (
+                  <a 
+                    href={`https://www.google.com/maps/place/${event.latitude},${event.longitude}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-sm btn-ghost"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    View on Maps
+                  </a>
+                )}
               </div>
 
               <div className="flex items-center gap-2">
@@ -138,7 +151,7 @@ function EventDetails() {
             </div>
 
             <div className="card-actions justify-end mt-6">
-              <Link to="/" className="btn btn-primary">Back to Home</Link>
+              <Link to="/" className="btn btn-error text-base-content">Back to Home</Link>
             </div>
           </div>
         </div>

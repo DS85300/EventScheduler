@@ -19,7 +19,9 @@ const Navbar = () => {
     <>
       <div className="navbar bg-[#414E59] text-white shadow-sm">
         <div className="flex-1">
-          <a className="btn btn-ghost text-white text-xl">Event Scheduler</a>
+          <a className="btn btn-ghost text-white text-xl">
+            <Link to="/">Event Scheduler</Link>
+          </a>
         </div>
         <div className="flex-none">
           <ul className="menu-horizontal px-1 mr-2">
